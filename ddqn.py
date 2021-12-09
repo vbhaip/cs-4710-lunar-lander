@@ -52,13 +52,13 @@ dqn.compile(Adam(learning_rate=1e-3), metrics=['mae'])
 
 if(load_weights):
     #if weights exist then load them and test
-    dqn.load_weights(f"ddqn_{ENV_NAME}_weights.h5f")
+    dqn.load_weights(f"model_weights/ddqn_{ENV_NAME}_weights.h5f")
     history = dqn.test(env, nb_episodes=50, visualize=False)
     plt.plot(history.history['episode_reward'])
     plt.title('reward over time')
     plt.ylabel('reward')
     plt.xlabel('epoch')
-    plt.savefig('dqn_test_results.png')
+    plt.savefig('results/dqn_test_results.png')
     print("average score: ", np.mean(history.history['episode_reward']))
 else:
     history = dqn.fit(env, nb_steps=200000, visualize=False, verbose=2)
@@ -66,7 +66,7 @@ else:
     plt.title('reward over time')
     plt.ylabel('reward')
     plt.xlabel('epoch')
-    plt.savefig('dqn_training_results.png')
+    plt.savefig('results/dqn_training_results.png')
     dqn.save_weights(f'ddqn_{ENV_NAME}_weights.h5f', overwrite=True)
 
     # run dqn test

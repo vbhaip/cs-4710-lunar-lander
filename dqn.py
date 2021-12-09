@@ -57,13 +57,13 @@ dqn.test(env, nb_episodes=5, visualize=True)
 
 try:
     #if weights exist then load them
-    dqn.load_weights(f"dqn_{ENV_NAME}_weights.h5f")
+    dqn.load_weights(f"model_weights/dqn_{ENV_NAME}_weights.h5f")
 except:
     # if weights don't exist, then train the model
     dqn.fit(env, nb_steps=50000, visualize=False, verbose=2)
 
     # After training is done, we save the final weights.
-    dqn.save_weights(f'dqn_{ENV_NAME}_weights.h5f', overwrite=True)
+    dqn.save_weights(f'model_weights/dqn_{ENV_NAME}_weights.h5f', overwrite=True)
 
 # run dqn test
 dqn.test(env, nb_episodes=50, visualize=True)
