@@ -1,5 +1,7 @@
+# Run environment with random actions and visualize it
+
 import gym
-env = gym.make('BipedalWalker-v3')
+env = gym.make('LunarLander-v2')
 env.reset()
 for _ in range(1000):
     env.render()

@@ -1,3 +1,5 @@
+# This was a previous file when experimenting to try to solve another environment
+
 # https://github.com/taylormcnally/keras-rl2/blob/master/examples/ddpg_pendulum.py
 # deep deterministic policy gradient -- combines policy gradient and deep q network
 import numpy as np

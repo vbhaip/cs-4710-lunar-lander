@@ -1,3 +1,4 @@
+# This runs a ddqn model with a keras neural network -- difference between this and dqn.py is that this uses a more sophisticated architecture
 # https://github.com/taylormcnally/keras-rl2/blob/master/examples/dqn_cartpole.py
 import numpy as np
 import gym
@@ -20,15 +21,19 @@ env = gym.make(ENV_NAME)
 np.random.seed(4710)
 env.seed(4710)
 nb_actions = env.action_space.n
+layer_size = 16
+
+
 load_weights = True
+
 # nn for the model
 model = Sequential()
 model.add(Flatten(input_shape=(1,) + env.observation_space.shape))
-model.add(Dense(16))
+model.add(Dense(layer_size))
 model.add(Activation('relu'))
-model.add(Dense(16))
+model.add(Dense(layer_size))
 model.add(Activation('relu'))
-model.add(Dense(16))
+model.add(Dense(layer_size))
 model.add(Activation('relu'))
 model.add(Dense(nb_actions))
 model.add(Activation('linear'))
@@ -66,4 +71,6 @@ else:
 
     # run dqn test
     history = dqn.test(env, nb_episodes=50, visualize=False)
+
+    #print average reward
     print(sum(history.history['episode_reward'])/50.)
